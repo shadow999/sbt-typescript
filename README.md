@@ -14,19 +14,30 @@ You will also need to enable the SbtWeb plugin in your project.
 
 The options provided mimic the arguments to the tsc command line compiler.
 
-Option              | Description
---------------------|------------
-sourceMap           | Generates source maps for input files.
-sourceRoot          | Specifies the location where the compiler should locate TypeScript files instead of the source locations.
-mapRoot             | Specifies the location where the compiler should locate map files instead of generated locations.
-target              | ECMA script target version. Should be "ES3" or "ES5" (default).
-noImplicitAny       | Warn on expressions and declarations with an implied "any" type.
-moduleKind          | Specifies module code generation. Should be "" (default), "commonjs", or "amd".
-outFile             | Concatenate and emit output to a single file. 
-outDir              | Destination directory for output files.
-removeComments      | Removes comments from the generated source.
-jsx                 | Specifices JSX-mode for .tsx files. Should be "preserve" (default) to generate .jsx or "react" to generate .js files.
-    
+Option              			| Description
+--------------------------------|------------
+declaration						| Generates corresponding '.d.ts' file.
+experimentalAsyncFunctions		| Enables experimental support for ES7 async functions.
+experimentalDecorators			| Enables experimental support for ES7 decorators.
+init							| Initializes a TypeScript project and creates a tsconfig.json file.
+jsx								| Specify JSX code generation: 'preserve' or 'react'
+mapRoot							| Specifies the location where debugger should locate map files instead of generated locations.
+module							| Specify module code generation: 'commonjs', 'amd', 'system' or 'umd'
+newLine							| Specifies the end of line sequence to be used when emitting files: 'CRLF' (dos) or 'LF' (unix).
+noEmit							| Do not emit outputs.
+noEmitOnError					| Do not emit outputs if any errors were reported.
+noImplicitAny					| Raise error on expressions and declarations with an implied 'any' type.
+outDir							| Redirect output structure to the directory.
+outFile							| Concatenate and emit output to single file.
+preserveConstEnums				| Do not erase const enum declarations in generated code.
+project							| Compile the project in the given directory.
+removeComments					| Do not emit comments to output.
+rootDir							| Specifies the root directory of input files. Use to control the output directory structure with --outDir.
+sourceMap						| Generates corresponding '.map' file.
+sourceRoot						| Specifies the location where debugger should locate TypeScript files instead of source locations.
+suppressImplicitAnyIndexErrors	| Suppress noImplicitAny errors for indexing objects lacking index signatures.
+target							| Specify ECMAScript target version: 'ES3' (default), 'ES5', or 'ES6' (experimental)
+
 By default, all typescript files (*.ts and *.tsx) are included in the compilation and will generate corresponding javascript
 files.  To change this, supply an includeFilter in the TypescriptKeys.typescript task configuration.
 
