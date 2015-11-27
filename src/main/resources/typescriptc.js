@@ -77,35 +77,59 @@
         var compSettings = new typescript.getDefaultCompilerOptions();
         logger.debug("instantiated");
 
-        compSettings.sourceMap = options.sourceMap;
-        compSettings.sourceRoot = options.sourceRoot;
-        compSettings.mapRoot = options.mapRoot;
-
-        if (options.moduleKind.toLowerCase() == "amd") {
-            compSettings.module = 2;
-        } else if (options.moduleKind.toLowerCase() == "commonjs") {
-            compSettings.module = 1;
+        if (options.module.toLowerCase() == "amd") {
+            compSettings.module = typescript.ModuleKind.AMD;
+        } else if (options.module.toLowerCase() == "commonjs") {
+            compSettings.module = typescript.ModuleKind.CommonJS;
+        } else if (options.module.toLowerCase() == "umd") {
+            compSettings.module = typescript.ModuleKind.UMD;
+        } else if (options.module.toLowerCase() == "system") {
+            compSettings.module = typescript.ModuleKind.System;
         }
 
         if (options.target.toLowerCase() == "es3") {
-            compSettings.codeGenTarget = 0;
+            compSettings.codeGenTarget = typescript.ScriptTarget.ES3;
         } else if (options.target.toLowerCase() == "es5") {
-            compSettings.codeGenTarget = 1;
+            compSettings.codeGenTarget = typescript.ScriptTarget.ES5;
         } else if (options.target.toLowerCase() == "es6") {
-            compSettings.codeGenTarget = 2;
+            compSettings.codeGenTarget = typescript.ScriptTarget.ES6;
         }
 
         if (options.jsx.toLowerCase() == "preserve") {
-	    // this is the default option in the compiler
-            compSettings.jsx = 1;
+        // this is the default option in the compiler
+            compSettings.jsx = typescript.JsxEmit.Preserve;
         } else if (options.jsx.toLowerCase() == "react") {
-            compSettings.jsx = 2;
+            compSettings.jsx = typescript.JsxEmit.React;
+        } else if (options.jsx.toLowerCase() == "none") {
+            compSettings.jsx = typescript.JsxEmit.None;
         }
 
-        compSettings.out = options.outFile;
+        if (options.newLine.toLowerCase() == "crlf") {
+            // this is the default option in the compiler
+            compSettings.newLine = typescript.NewLineKind.CarriageReturnLineFeed;
+        } else if (options.newLine.toLowerCase() == "unix") {
+            compSettings.newLine = typescript.NewLineKind.LineFeed;
+        }
+
+        compSettings.declaration = options.declaration;
+        compSettings.experimentalAsyncFunctions = options.experimentalAsyncFunctions;
+        compSettings.experimentalDecorators = options.experimentalDecorators;
+        compSettings.init = options.init;
+        compSettings.mapRoot = options.mapRoot;
+        compSettings.noEmit = options.noEmit;
+        compSettings.noEmitOnError = options.noEmitOnError;
+        compSettings.noImplicitAny = options.noImplicitAny;
         compSettings.outDir = options.outDir;
+        compSettings.outFile = options.outFile;
+        compSettings.out = options.outFile;
+        compSettings.preserveConstEnums = options.preserveConstEnums;
+        compSettings.project = options.project;
         compSettings.removeComments = options.removeComments;
         compSettings.rootDir = options.rootDir;
+        compSettings.sourceMap = options.sourceMap;
+        compSettings.sourceRoot = options.sourceRoot;
+        compSettings.suppressImplicitAnyIndexErrors = options.suppressImplicitAnyIndexErrors;
+
         logger.debug("settings created");
 
         return compSettings;

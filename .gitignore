@@ -40,3 +40,7 @@ maven-eclipse.xml
 **/eclipse-bin/
 **/.externalToolBuilders/
 **/RemoteSystemsTempFiles/
+
+# Node.js
+node_modules/
+package.json
