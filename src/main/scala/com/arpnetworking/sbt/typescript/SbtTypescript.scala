@@ -40,6 +40,7 @@ object Import {
     val noEmit = SettingKey[Boolean]("--noEmit", "Do not emit outputs.")
     val noEmitOnError = SettingKey[Boolean]("--noEmitOnError", "Do not emit outputs if any errors were reported.")
     val noImplicitAny = SettingKey[Boolean]("--noImplicitAny", "Raise error on expressions and declarations with an implied 'any' type.")
+    val noLib = SettingKey[Boolean]("--noLib", "Do not include the default library file (lib.d.ts).")
     val outDir = SettingKey[String]("--outDir DIRECTORY", "Redirect output structure to the directory.")
     val outFile = SettingKey[String]("--outFile FILE", "Concatenate and emit output to single file.")
     val preserveConstEnums = SettingKey[Boolean]("--preserveConstEnums", "Do not erase const enum declarations in generated code.")
@@ -49,7 +50,7 @@ object Import {
     val sourceMap = SettingKey[Boolean]("--sourceMap", "Generates corresponding '.map' file.")
     val sourceRoot = SettingKey[String]("--sourceRoot LOCATION", "Specifies the location where debugger should locate TypeScript files instead of source locations.")
     val suppressImplicitAnyIndexErrors = SettingKey[Boolean]("--suppressImplicitAnyIndexErrors", "Suppress noImplicitAny errors for indexing objects lacking index signatures.")
-    val target = SettingKey[String]("--target VERSION", "Specify ECMAScript target version: 'ES3' (default), 'ES5', or 'ES6' (experimental)")
+    val target = SettingKey[String]("--target VERSION", "Specify ECMAScript target version: 'ES3', 'ES5', or 'ES6' (experimental).")
   }
 }
 
@@ -85,6 +86,7 @@ object SbtTypescript extends AutoPlugin {
       "noEmit" -> JsBoolean(noEmit.value),
       "noEmitOnError" -> JsBoolean(noEmitOnError.value),
       "noImplicitAny" -> JsBoolean(noImplicitAny.value),
+      "noLib" -> JsBoolean(noLib.value),
       "outDir" -> JsString(outDir.value),
       "outFile" -> JsString(outFile.value),
       "preserveConstEnums" -> JsBoolean(preserveConstEnums.value),
@@ -113,6 +115,7 @@ object SbtTypescript extends AutoPlugin {
     noEmit := false,
     noEmitOnError := false,
     noImplicitAny := false,
+    noLib := false,
     outDir := ((webTarget in Assets).value / "typescript").absolutePath,
     outFile := "",
     preserveConstEnums := false,

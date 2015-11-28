@@ -119,6 +119,7 @@
         compSettings.noEmit = options.noEmit;
         compSettings.noEmitOnError = options.noEmitOnError;
         compSettings.noImplicitAny = options.noImplicitAny;
+        compSettings.noLib = options.noLib;
         compSettings.outDir = options.outDir;
         compSettings.outFile = options.outFile;
         compSettings.out = options.outFile;
