@@ -112,6 +112,7 @@
         }
 
         compSettings.declaration = options.declaration;
+        compSettings.emitDecoratorMetadata = options.emitDecoratorMetadata;
         compSettings.experimentalAsyncFunctions = options.experimentalAsyncFunctions;
         compSettings.experimentalDecorators = options.experimentalDecorators;
         compSettings.init = options.init;

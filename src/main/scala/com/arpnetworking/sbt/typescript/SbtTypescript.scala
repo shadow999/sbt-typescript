@@ -30,6 +30,7 @@ object Import {
     val typescriptGenerateCompiler = TaskKey[File]("generateCompiler", "Generates the typescript compile script.")
 
     val declaration = SettingKey[Boolean]("--declaration", "Generates corresponding '.d.ts' file.")
+    val emitDecoratorMetadata = SettingKey[Boolean]("--emitDecoratorMetadata", "Emit design-type metadata for decorated declarations in source.")
     val experimentalAsyncFunctions = SettingKey[Boolean]("--experimentalAsyncFunctions", "Enables experimental support for ES7 async functions.")
     val experimentalDecorators = SettingKey[Boolean]("--experimentalDecorators", "Enables experimental support for ES7 decorators.")
     val init = SettingKey[Boolean]("--init", "Initializes a TypeScript project and creates a tsconfig.json file.")
@@ -76,6 +77,7 @@ object SbtTypescript extends AutoPlugin {
 
     jsOptions := JsObject(
       "declaration" -> JsBoolean(declaration.value),
+      "emitDecoratorMetadata" -> JsBoolean(emitDecoratorMetadata.value),
       "experimentalAsyncFunctions" -> JsBoolean(experimentalAsyncFunctions.value),
       "experimentalDecorators" -> JsBoolean(experimentalDecorators.value),
       "init" -> JsBoolean(init.value),
@@ -105,6 +107,7 @@ object SbtTypescript extends AutoPlugin {
 
   override def projectSettings = Seq(
     declaration := false,
+    emitDecoratorMetadata := false,
     experimentalAsyncFunctions := false,
     experimentalDecorators := false,
     init := false,

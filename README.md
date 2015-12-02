@@ -17,6 +17,7 @@ The options provided mimic the arguments to the tsc command line compiler.
 Option                          | Default value                     | Description
 --------------------------------|-----------------------------------|-------------
 declaration                     | false                             | Generates corresponding '.d.ts' file.
+emitDecoratorMetadata           | false                             | Emit design-type metadata for decorated declarations in source.
 experimentalAsyncFunctions      | false                             | Enables experimental support for ES7 async functions.
 experimentalDecorators          | false                             | Enables experimental support for ES7 decorators.
 init                            | false                             | Initializes a TypeScript project and creates a tsconfig.json file.
