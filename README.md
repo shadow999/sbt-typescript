@@ -24,6 +24,7 @@ init                            | false                             | Initialize
 jsx                             | "preserve"                        | Specify JSX code generation: 'preserve' or 'react'
 mapRoot                         | ""                                | Specifies the location where debugger should locate map files instead of generated locations.
 module                          | ""                                | Specify module code generation: 'commonjs', 'amd', 'system' or 'umd'
+moduleResolution                | "classic"                         | Specifies module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6).
 newLine                         | "crlf"                            | Specifies the end of line sequence to be used when emitting files: 'CRLF' (dos) or 'LF' (unix).
 noEmit                          | false                             | Do not emit outputs.
 noEmitOnError                   | false                             | Do not emit outputs if any errors were reported.

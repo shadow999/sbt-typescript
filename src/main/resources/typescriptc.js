@@ -111,6 +111,13 @@
             compSettings.newLine = typescript.NewLineKind.LineFeed;
         }
 
+        if (options.moduleResolution.toLowerCase() == "node") {
+            // this is the default option in the compiler
+            compSettings.moduleResolution = typescript.ModuleResolutionKind.NodeJs;
+        } else if (options.moduleResolution.toLowerCase() == "classic") {
+            compSettings.moduleResolution = typescript.ModuleResolutionKind.Classic;
+        }
+
         compSettings.declaration = options.declaration;
         compSettings.emitDecoratorMetadata = options.emitDecoratorMetadata;
         compSettings.experimentalAsyncFunctions = options.experimentalAsyncFunctions;

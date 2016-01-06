@@ -37,6 +37,7 @@ object Import {
     val jsx = SettingKey[String]("--jsx KIND", "Specify JSX code generation: 'preserve' or 'react'")
     val mapRoot = SettingKey[String]("--mapRoot LOCATION", "Specifies the location where debugger should locate map files instead of generated locations.")
     val module = SettingKey[String]("--module KIND", "Specify module code generation: 'commonjs', 'amd', 'system' or 'umd'")
+    val moduleResolution = SettingKey[String]("--moduleResolution", "Specifies module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6).")
     val newLine = SettingKey[String]("--newLine NEWLINE", "Specifies the end of line sequence to be used when emitting files: 'CRLF' (dos) or 'LF' (unix).")
     val noEmit = SettingKey[Boolean]("--noEmit", "Do not emit outputs.")
     val noEmitOnError = SettingKey[Boolean]("--noEmitOnError", "Do not emit outputs if any errors were reported.")
@@ -84,6 +85,7 @@ object SbtTypescript extends AutoPlugin {
       "jsx" -> JsString(jsx.value),
       "mapRoot" -> JsString(mapRoot.value),
       "module" -> JsString(module.value),
+      "moduleResolution" -> JsString(moduleResolution.value),
       "newLine" -> JsString(newLine.value),
       "noEmit" -> JsBoolean(noEmit.value),
       "noEmitOnError" -> JsBoolean(noEmitOnError.value),
@@ -114,6 +116,7 @@ object SbtTypescript extends AutoPlugin {
     jsx := "preserve",
     mapRoot := "",
     module := "",
+    moduleResolution := "classic",
     newLine := "crlf",
     noEmit := false,
     noEmitOnError := false,
@@ -129,7 +132,6 @@ object SbtTypescript extends AutoPlugin {
     sourceRoot := "",
     suppressImplicitAnyIndexErrors := false,
     target := "ES5",
-    JsEngineKeys.parallelism := 1,
     logLevel := Level.Info
 
   ) ++ inTask(typescript)(
